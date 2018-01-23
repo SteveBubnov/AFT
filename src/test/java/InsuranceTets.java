@@ -1,7 +1,4 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,6 +34,7 @@ public class InsuranceTets {
         driver.get(url);
     }
 
+    @Ignore
     @Test
     public void testInsuranceFormValidation() {
         Wait<WebDriver> wait = new WebDriverWait(driver, 10, 1000);
