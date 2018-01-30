@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 public class InsuranceTets {
@@ -134,4 +135,5 @@ public class InsuranceTets {
     public void checking(WebElement element, String value) {
         Assert.assertEquals(value, element.getAttribute("value"));
     }
+
 }

@@ -1,10 +1,11 @@
+import org.junit.Ignore;
 import org.junit.Test;
-import org.openqa.selenium.WebElement;
 import pageObjects.MainPage;
 import pageObjects.TravelInsuranceFillPage;
 import pageObjects.TravelInsuranceInfoPage;
+import steps.BaseSteps;
 
-public class Lesson2InsuranceTest extends BaseTest {
+public class Lesson2InsuranceTest extends BaseSteps {
 
     String insured0_nameValue = "IVAN";
     String insured0_surnameValue = "IVANOV";
@@ -18,6 +19,7 @@ public class Lesson2InsuranceTest extends BaseTest {
     String issueDateValue = "01.01.1987";
     String issuePlaceValue = "Неким ОВД ГУВД РОВД РОССИИ";
 
+    @Ignore
     @Test
     public void insuranceTest() throws InterruptedException {
         MainPage mainPage = new MainPage(driver);
