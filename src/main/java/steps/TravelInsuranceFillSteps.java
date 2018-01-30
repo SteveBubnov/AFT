@@ -1,27 +1,27 @@
 package steps;
 
 import org.openqa.selenium.By;
+import pageObjects.BasePage;
 import pageObjects.TravelInsuranceFillPage;
 import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.HashMap;
 
-public class TravelInsuranceFillSteps extends BaseSteps {
-    TravelInsuranceFillPage travelInsuranceFillPage = new TravelInsuranceFillPage(driver);
+public class TravelInsuranceFillSteps {
 
     @Step("Выбрать вкладку - Минимальный")
     public void stepClickMinSum(){
-        travelInsuranceFillPage.clickMinSum();
+        new TravelInsuranceFillPage(BaseSteps.getDriver()).clickMinSum();
     }
 
     @Step("Нажать кнопку - Продолжить")
     public void stepClickProceed(){
-        travelInsuranceFillPage.clickProceed();
+        new TravelInsuranceFillPage(BaseSteps.getDriver()).clickProceed();
     }
 
     @Step("Поле {0} заполняется значением {1}")
     public void stepFill(String fieldName, String value){
-        travelInsuranceFillPage.fill(fieldName, value);
+        new TravelInsuranceFillPage(BaseSteps.getDriver()).fill(fieldName, value);
     }
 
     @Step("Заполняются поля:")
@@ -31,12 +31,12 @@ public class TravelInsuranceFillSteps extends BaseSteps {
 
     @Step("Указывать пол - Мужской")
     public void stepSetMale(){
-        travelInsuranceFillPage.setMale();
+        new TravelInsuranceFillPage(BaseSteps.getDriver()).setMale();
     }
 
     @Step("В поле {0} присутсвие значения {1}")
     public void stepCheck(String fieldName, String value){
-        travelInsuranceFillPage.checking(fieldName, value);
+        new TravelInsuranceFillPage(BaseSteps.getDriver()).checking(fieldName, value);
     }
 
     @Step("Проверяются поля:")
@@ -46,11 +46,11 @@ public class TravelInsuranceFillSteps extends BaseSteps {
 
     @Step("Нажать кнопку - Далее")
     public void stepClickForward(){
-        travelInsuranceFillPage.clickForward();
+        new TravelInsuranceFillPage(BaseSteps.getDriver()).clickForward();
     }
 
     @Step("Проверить наличие ошибки")
     public void stepCheckError (){
-        isElementPresent(By.xpath("//div[text() = 'Заполнены не все обязательные поля'"));
+        BasePage.isElementPresent(By.xpath("//div[text() = 'Заполнены не все обязательные поля']"));
     }
 }

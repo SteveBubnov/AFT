@@ -30,7 +30,7 @@ public class Lesson2InsuranceTest extends BaseSteps {
         TravelInsuranceInfoPage travelInsuranceInfoPage = new TravelInsuranceInfoPage(driver);
         travelInsuranceInfoPage.checkTitle();
         travelInsuranceInfoPage.clickSendNowButton();
-        switchToSecondTab();
+        //switchToSecondTab();
 
         TravelInsuranceFillPage travelInsuranceFillPage = new TravelInsuranceFillPage(driver);
         travelInsuranceFillPage.clickMinSum();

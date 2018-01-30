@@ -5,12 +5,9 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import pageObjects.BasePage;
 import ru.yandex.qatools.allure.annotations.Step;
 import util.TestProperties;
 
@@ -21,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseSteps {
 
-    protected static WebDriver driver;
+    public static WebDriver driver;
     protected static String url;
     public static Properties properties = TestProperties.getInstance().getProperties();
     public static WebDriver getDriver() {
@@ -58,17 +55,8 @@ public class BaseSteps {
         driver.quit();
     }
 
-    @Step("Переключиться на новую вкладку")
-    public void switchToSecondTab() {
-        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
-    }
-    public boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+    @Step("Переключение на вторую вкладку")
+    public void stepSwitchToSecondTab(){
+        new BasePage(BaseSteps.getDriver()).switchToSecondTab();
     }
     }

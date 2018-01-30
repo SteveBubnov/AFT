@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 public class Lesson3InsuranceTest extends BaseSteps{
 
+    BaseSteps baseSteps = new BaseSteps();
     MainSteps mainSteps = new MainSteps();
     TravelInsuranceInfoSteps travelInsuranceInfoSteps = new TravelInsuranceInfoSteps();
     TravelInsuranceFillSteps travelInsuranceFillSteps = new TravelInsuranceFillSteps();
@@ -33,8 +34,8 @@ public class Lesson3InsuranceTest extends BaseSteps{
         mainSteps.stepSelectSubMenu("Страхование путешественников");
 
         travelInsuranceInfoSteps.stepCheckTitle();
-        travelInsuranceInfoSteps.stepСlickSendNowButton();
-        switchToSecondTab();
+        travelInsuranceInfoSteps.stepClickSendNowButton();
+        baseSteps.stepSwitchToSecondTab();
 
         travelInsuranceFillSteps.stepClickMinSum();
         travelInsuranceFillSteps.stepClickProceed();
