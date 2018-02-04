@@ -1,18 +1,13 @@
 package steps;
 
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.openqa.selenium.By;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import pageObjects.BasePage;
 import ru.yandex.qatools.allure.annotations.Step;
 import util.TestProperties;
-
-import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +20,7 @@ public class BaseSteps {
         return driver;
     }
 
-    @BeforeClass
+    @Before
     public static void setUp() throws Exception {
         switch (properties.getProperty("browser")) {
             case "firefox":
@@ -50,7 +45,7 @@ public class BaseSteps {
         driver.get(url);
     }
 
-    @AfterClass
+    @After
     public static void close() throws Exception {
         driver.quit();
     }

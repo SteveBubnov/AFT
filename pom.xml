@@ -27,14 +27,13 @@
                 <configuration>
 
                     <testFailureIgnore>true</testFailureIgnore>
+                    <includes>
+                        <include>**/CucumberRunner.java</include>
+                    </includes>
                     <argLine>
                         -Dfile.encoding=UTF-8 -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
                     </argLine>
                     <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>util.AllureListener</value>
-                        </property>
                     </properties>
 
                 </configuration>
@@ -70,14 +69,8 @@
         </dependency>
         <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-java-annotations</artifactId>
-            <version>1.5.4</version>
-        </dependency>
-        <dependency>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-junit-adaptor</artifactId>
-            <version>1.5.4</version>
-            <scope>test</scope>
+            <artifactId>allure-cucumber-jvm-adaptor</artifactId>
+            <version>1.6.3</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -88,11 +81,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-junit-adaptor</artifactId>
             <version>RELEASE</version>
         </dependency>
     </dependencies>
