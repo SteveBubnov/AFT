@@ -11,10 +11,22 @@ import java.util.NoSuchElementException;
 
 public class BasePage {
 
+
+    String storage;
+
     public BasePage(WebDriver driver){
 
         PageFactory.initElements(driver, this);
 
+    }
+
+
+    public String getStorage() {
+        return storage;
+    }
+
+    public void setStorage(String storage) {
+        this.storage = storage;
     }
 
     public void switchToSecondTab() {

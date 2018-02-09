@@ -39,7 +39,7 @@ public class BaseSteps {
 
         url = properties.getProperty("app.url");
         System.out.println(url);
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(url);
@@ -50,8 +50,4 @@ public class BaseSteps {
         driver.quit();
     }
 
-    @Step("Переключение на вторую вкладку")
-    public void stepSwitchToSecondTab(){
-        new BasePage(BaseSteps.getDriver()).switchToSecondTab();
-    }
     }

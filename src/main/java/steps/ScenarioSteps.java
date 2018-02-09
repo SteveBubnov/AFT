@@ -1,78 +1,68 @@
 package steps;
 
-import cucumber.api.DataTable;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.bytebuddy.implementation.bytecode.Throw;
 
 public class ScenarioSteps {
-
-    BaseSteps baseSteps = new BaseSteps();
     MainSteps mainSteps = new MainSteps();
-    TravelInsuranceInfoSteps travelInsuranceInfoSteps = new TravelInsuranceInfoSteps();
-    TravelInsuranceFillSteps travelInsuranceFillSteps = new TravelInsuranceFillSteps();
+    YandexMainSteps yandexMainSteps = new YandexMainSteps();
+    YandexMarketItemSteps yandexMarketItemSteps = new YandexMarketItemSteps();
+    YandexDetailedItemSteps yandexDetailedItemSteps = new YandexDetailedItemSteps();
+    String storage;
 
 
+    @When("выбран раздел \"(.*)\"$")
+    public void stepSelectPageOnNavBar(String menuItem) {
+        yandexMainSteps.stepSelectPageOnNavBar(menuItem);
+    }
 
-    @When("^выбран пункт меню\"(.*)\"$")
-    public void stepSelectMainMenu(String menuItem){
+    @When("выбрано меню \"(.*)\"$")
+    public void stepSelectMainMenu(String menuItem) {
         mainSteps.stepSelectMainMenu(menuItem);
     }
 
-    @When("^выбран подпункт \"(.*)\"$")
+    @When("выбран подпункт\"(.*)\"$")
     public void stepSelectSubMenu (String menuItem){
         mainSteps.stepSelectSubMenu(menuItem);
     }
 
-    @Then("^проверить, что заголовок окна содержит текст - Страхование путешественников")
+    @When("указана цена от \"(.*)\"$")
+    public void stepSetMinPrice(String value){
+        yandexMarketItemSteps.stepSetMinPrice(value);
+    }
+
+    @When("выбран производитель \"(.*)\"$")
+    public void setManufacturer (String name){
+        yandexMarketItemSteps.setManufacturer(name);
+    }
+
+    @When("нажата кнопка \"(.*)\"$")
+    public void stepClickButton (String name) throws Throwable {
+        Thread.sleep(5000);
+        yandexMarketItemSteps.stepClickButton(name);
+    }
+
+    @Then("проверить, что товаров на странице \"(.*)\"$")
+    public void checkItemGridSize(Integer size){
+        yandexMarketItemSteps.stepCheckItemGridSize(size);
+    }
+
+    @Then("сохранено наименование первого товара")
+    public void stepRememberName() throws InterruptedException{
+       storage = yandexMarketItemSteps.stepRememberName();
+    }
+
+    @When("введено сохраненное значение в строку поиска")
+    public void stepInputRememberedValueToSearchBar(){
+        yandexMarketItemSteps.stepInputRememberedValueToSearchBar(storage);
+    }
+
+    @Then("проверено что заголовок соответствует сохраненному значению")
     public void stepCheckTitle(){
-        travelInsuranceInfoSteps.stepCheckTitle();
-    }
+        yandexDetailedItemSteps.stepCheckTitle(storage);
 
-    @When("^выполнено нажатие на кнопку - Оформить сейчас")
-    public void stepClickSendNowButton(){
-        travelInsuranceInfoSteps.stepClickSendNowButton();
-    }
 
-    @When("^открывается новая вкладка")
-    public void stepSwitchToSecondTab(){
-        baseSteps.stepSwitchToSecondTab();
-    }
-
-    @When("^выбрана минимальная сумма страхования")
-    public void stepClickMinSum(){
-        travelInsuranceFillSteps.stepClickMinSum();
-    }
-
-    @When("^нажата кнопка - продолжить")
-    public void stepClickProceed(){
-        travelInsuranceFillSteps.stepClickProceed();
-    }
-
-    @When("^заполняются поля:")
-    public void stepFillFields(DataTable fields){
-        fields.asMap(String.class, String.class).forEach(
-                (key, value) -> travelInsuranceFillSteps.stepFill(key, value));
-    }
-
-    @When("^указан пол - Мужской")
-    public void stepSetMale(){
-        travelInsuranceFillSteps.stepSetMale();
-    }
-
-    @Then("^проверяются поля:")
-    public void stepCheckFields(DataTable fields){
-        fields.asMap(String.class, String.class).forEach(
-                (key,value) -> travelInsuranceFillSteps.stepCheck(key, value));
-    }
-
-    @When("^нажата кнопка - Далее")
-    public void stepClickForward(){
-        travelInsuranceFillSteps.stepClickForward();
-    }
-
-    @Then("^Проверяется наличие текста ошибки - Заполнены не все обязательные поля")
-    public void stepCheckError(){
-        travelInsuranceFillSteps.stepCheckError();
     }
 
 }

@@ -10,7 +10,7 @@ public class MainSteps {
         new MainPage(BaseSteps.getDriver()).selectMainMenu(menuItem);
     }
 
-    @Step("Выбран вид страхования {0}")
+    @Step("Выбран подпункт {0}")
     public void stepSelectSubMenu(String menuItem){
         new MainPage(BaseSteps.getDriver()).selectSubMenu(menuItem);
     }
